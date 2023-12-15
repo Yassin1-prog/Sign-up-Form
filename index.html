@@ -43,11 +43,11 @@
                 <div class="password">
                     <div>
                         <label for="pass">Password</label>
-                        <input type="password" id="pass" required>
+                        <input type="password" id="pass" oninput="checkPasswordMatch()" required>
                     </div>
                     <div>
                         <label for="cpass">Confirm Password</label>
-                        <input type="password" id="cpass" required>
+                        <input type="password" id="cpass" oninput="checkPasswordMatch()" required>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,20 @@
         </form>
 
     </div>
+    <script>
+        function checkPasswordMatch() {
+          var password = document.getElementById('pass');
+          var confirmPassword = document.getElementById('cpass');
+    
+          // Check if passwords match
+          if (password.value === confirmPassword.value) {
+            confirmPassword.setCustomValidity(''); // Set validity to empty to make it valid
+          } else {
+            confirmPassword.setCustomValidity('Passwords do not match.'); // Set validity message
+          }
+          //confirmPassword.reportValidity();
+        }
+      </script>
     
 </body>
 </html>
